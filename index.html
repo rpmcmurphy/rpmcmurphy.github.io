@@ -295,7 +295,7 @@ $('.contact-form').on('submit',function(e){
             success: function(response) {
                 
                 if(response.result == "success") {
-                    $('.contact1-form')[0].reset();
+                    $('.contact-form')[0].reset();
                     alert('Thank you for contacting us.');
                     return true;
                 }
