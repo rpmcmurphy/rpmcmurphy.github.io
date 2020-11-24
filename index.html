@@ -256,8 +256,8 @@
                 </div>
 		<div class="work-request--information">
                   <div class="information-message">
-                    <input id="name" type="textarea" spellcheck="true" name="message">
-                    <label for="name">Message</label>
+		    <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                    <label for="message">Message</label>
                   </div>
                 </div>
                 <input type="submit" value="Send">
@@ -282,7 +282,7 @@
 <script src="assets/js/functions-min.js"></script>
 
 <script>
-$('.contact1-form').on('submit',function(e){
+$('.contact-form').on('submit',function(e){
         //optional validation code here
   
         e.preventDefault();
@@ -291,7 +291,7 @@ $('.contact1-form').on('submit',function(e){
             url: "https://script.google.com/macros/s/AKfycby7l7M6AI3HEWP6UP4yO0w8AVSxXCmbqxA_al9ebZVofPlnPCs/exec",
             method: "POST",
             dataType: "json",
-            data: $(".contact1-form").serialize(),
+            data: $(".contact-form").serialize(),
             success: function(response) {
                 
                 if(response.result == "success") {
