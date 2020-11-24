@@ -1,1 +1,1 @@
-##A personal portfolio of Ripon Parbez
+## A personal portfolio of Ripon Parbez
