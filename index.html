@@ -177,11 +177,10 @@
           <li class="l-section section">
             <div class="hire">
               <h2>You want me to do</h2>
-              <!-- checkout formspree.io for easy form setup -->
-              <form class="work-request">
+              <form class="work-request contact-form">
                 <div class="work-request--options">
                   <span class="options-a">
-                    <input id="opt-1" type="checkbox" value="app design">
+                    <input id="opt-1" type="checkbox" value="Web Development" name="task-type">
                     <label for="opt-1">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -191,7 +190,7 @@
                       </svg>
                       Web Development
                     </label>
-                    <input id="opt-2" type="checkbox" value="graphic design">
+                    <input id="opt-2" type="checkbox" value="Website UI-UX" name="task-type">
                     <label for="opt-2">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -201,7 +200,7 @@
                       </svg>
                       Website UI/UX Design
                     </label>
-                    <input id="opt-3" type="checkbox" value="motion design">
+                    <input id="opt-3" type="checkbox" value="Database Design" name="task-type">
                     <label for="opt-3">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -213,7 +212,7 @@
                     </label>
                   </span>
                   <span class="options-b">
-                    <input id="opt-4" type="checkbox" value="ux design">
+                    <input id="opt-4" type="checkbox" value="Server installation" name="task-type">
                     <label for="opt-4">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -223,7 +222,7 @@
                       </svg>
                       Server Installation and Configuration
                     </label>
-                    <input id="opt-5" type="checkbox" value="webdesign">
+                    <input id="opt-5" type="checkbox" value="Speed Optimization and SEO" name="task-type">
                     <label for="opt-5">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -233,7 +232,7 @@
                       </svg>
                       Speed Optimization and SEO
                     </label>
-                    <input id="opt-6" type="checkbox" value="marketing">
+                    <input id="opt-6" type="checkbox" value="Bug Fixing" name="task-type">
                     <label for="opt-6">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                       viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
@@ -247,15 +246,21 @@
                 </div>
                 <div class="work-request--information">
                   <div class="information-name">
-                    <input id="name" type="text" spellcheck="false">
+                    <input id="name" type="text" spellcheck="false" name="name">
                     <label for="name">Name</label>
                   </div>
                   <div class="information-email">
-                    <input id="email" type="email" spellcheck="false">
+                    <input id="email" type="email" spellcheck="false" name="email">
                     <label for="email">Email</label>
                   </div>
                 </div>
-                <input type="submit" value="Send Request">
+		<div class="work-request--information">
+                  <div class="information-message">
+                    <input id="name" type="textarea" spellcheck="true" name="message">
+                    <label for="name">Message</label>
+                  </div>
+                </div>
+                <input type="submit" value="Send">
               </form>
             </div>
           </li>
@@ -275,5 +280,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 <script src="assets/js/functions-min.js"></script>
+
+<script>
+$('.contact1-form').on('submit',function(e){
+        //optional validation code here
+  
+        e.preventDefault();
+      
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycby7l7M6AI3HEWP6UP4yO0w8AVSxXCmbqxA_al9ebZVofPlnPCs/exec",
+            method: "POST",
+            dataType: "json",
+            data: $(".contact1-form").serialize(),
+            success: function(response) {
+                
+                if(response.result == "success") {
+                    $('.contact1-form')[0].reset();
+                    alert('Thank you for contacting us.');
+                    return true;
+                }
+                else {
+                    alert("Something went wrong. Please try again.")
+                }
+            },
+            error: function() {
+                
+                alert("Something went wrong. Please try again.")
+            }
+        })
+    });
+</script>
+
 </body>
 </html>
